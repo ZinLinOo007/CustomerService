@@ -11,7 +11,7 @@ namespace CustomerService.Tests
 {
     public class CustomerServiceTests
     {
-        public List<Customer> SimpleCustomer()
+        public List<Customer> SimpleCustomers()
         {
             List<Customer> customers = new List<Customer>
             {
@@ -26,7 +26,7 @@ namespace CustomerService.Tests
         public void GetCustomers_ValidCall()
         {
             //Arrange
-            var expected = SimpleCustomer();
+            var expected = SimpleCustomers();
 
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.GetCustomers())
@@ -52,7 +52,7 @@ namespace CustomerService.Tests
         public void GetCustomerById_ValidCall()
         {
             //Arrange
-            var expected = SimpleCustomer()[2];
+            var expected = SimpleCustomers()[2];
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.GetCustomerById(expected.Id))
                 .Returns(expected);
@@ -91,7 +91,7 @@ namespace CustomerService.Tests
         public void AddCustomer_ValidCall()
         {
             //Arrange
-            var customer = SimpleCustomer();
+            var customer = SimpleCustomers();
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.AddCustomer(customer[0]))
                 .Returns(true);
@@ -167,7 +167,7 @@ namespace CustomerService.Tests
         public void UpdateCustomer_ValidCall()
         {
             //Arrange
-            var customer = SimpleCustomer();
+            var customer = SimpleCustomers();
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.UpdateCustomer(customer[0]))
                 .Returns(true);
@@ -236,7 +236,7 @@ namespace CustomerService.Tests
         public void DeleteCustomer_ValidCall()
         {
             //Arrange
-            var customer = SimpleCustomer()[0];
+            var customer = SimpleCustomers()[0];
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.DeleteCustomer(customer.Id))
                 .Returns(true);
@@ -258,7 +258,7 @@ namespace CustomerService.Tests
         public void DeleteCustomer_RepositoryReturnsFalse()
         {
             //Arrange
-            var customer = SimpleCustomer()[0];
+            var customer = SimpleCustomers()[0];
             var mockRepository = new Mock<ICustomerRepository>();
             mockRepository.Setup(repo => repo.DeleteCustomer(customer.Id))
                 .Returns(false);
